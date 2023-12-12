@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumping Player</title>
+    <style>
+        html {
+            background-image: url("noche.jpg");
+            background-size: cover;
+        }
+        #player {
+            background-image: url('stickman-running.gif');
+            background-size: cover;
+            width: 70px;
+            height: 100px;
+            position: absolute;
+            bottom: 90px;
+            left: 20%;
+            
+        }
+        #obstacle 
+        {
+            background-image: url('images.png');
+            background-size: cover;
+            width: 60px;
+            height: 90px;
+            position: absolute;
+            bottom: 90px;
+            right: 0px;
+        }
+
+        #score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+        }
+        @keyframes miAnimacion {
+            0% { bottom: 90px; }
+            40% { bottom: 270px; }
+            100% { bottom: 90px; }
+        }
+        @keyframes movimiento {
+            from { right: 0; }
+            to { right: 100%; }
+        }
+        @keyframes movimiento1 {
+            from { right: 0; }
+            to { right: 100%; }
+        }
+        @keyframes movimiento2 {
+            from { right: 0; }
+            to { right: 100%; }
+        }
+        #startButton
+        {
+            position: absolute;
+            font-size: 2rem;
+            top: 30%;
+            left: 42%;
+            width: 35vh;
+            height: 20vh;
+            color: white;
+            background-color: black;
+            animation: boton 3s;
+            border-radius: 15px;
+            
+        }
+        #startButton:hover
+        {
+            animation: hoverboton 3s;
+            
+        }
+        @keyframes boton {
+            from{ background-color: rgb(28, 28, 28);}
+            to{background-color: black;}
+        }
+        @keyframes hoverboton {
+            0%
+            {
+                background-color:black;
+            }
+            100%
+            {
+                background-color:rgb(28, 28, 28) ;
+            }            
+        }
+        @media screen and (min-height: 765px) and (max-height:900px){
+    #player {
+        bottom: 27%;
+    }
+    #obstacle {
+        bottom: 27%;
+    }
+    @keyframes miAnimacion {
+            0% { bottom: 27%; }
+            40% { bottom: 50%; }
+            100% { bottom: 27%; }
+        }
+}
+    </style>
+</head>
+<body>
+    <button id="startButton">Start Game</button>
+    <audio src="tetrisgameboy1-gameboy.mp3" autoplay></audio>
+    <div id="player"></div>
+    <div id="obstacle"></div>
+    <div id="score">Score: 0</div>
+    <script>
+        var player = document.getElementById("player");
+        var obstacle = document.getElementById("obstacle");
+        var isJumping = false;
+        var score = 0;
+        var startButton = document.getElementById("startButton");
+        var start=false;
+startButton.addEventListener("click", function () {
+    startGame();
+    
+});
+
+
+
+function startGame() {
+    start=true;
+    player.style.animation = "miAnimacion 0.5s ease-out";
+    setTimeout(() => {
+         obstacle.style.animation = "movimiento 1.7s linear infinite";
+    }, 1000);
+   jump(); 
+   
+    startButton.style.display = "none";
+    score = 0;
+}
+
+
+        document.addEventListener("keydown", (event) => {
+    console.log("Key pressed: " + event.key);
+    if ((event.key === " " || event.key === "ArrowUp") && !isJumping) {
+        jump();
+    }
+});
+
+        
+        function jump() {
+            if (!isJumping) {
+                isJumping = true;
+                player.style.animation = "miAnimacion 0.5s ease-out";
+                player.style.backgroundImage='url("stickman-jump.gif")';
+                setTimeout(function() {
+                    player.style.backgroundImage="url('stickman-running.gif') ";
+                    player.style.animation = "none";
+                    isJumping = false;
+                }, 600);
+            }
+        }
+
+        function checkCollision() {
+            var playerRect = player.getBoundingClientRect();
+            var obstacleRect = obstacle.getBoundingClientRect();
+
+            if (
+                playerRect.right > obstacleRect.left &&
+                playerRect.left < obstacleRect.right &&
+                playerRect.bottom > obstacleRect.top &&
+                playerRect.top < obstacleRect.bottom
+            ) {
+                window.location.href = "primero.html";
+                // Collision detected
+                alert("Colisiono");
+                score = 0; // Reinicia el marcador
+                obstacle.style.animation = "movimiento 3s linear infinite";
+                
+            }
+            else
+            {
+                updateScore();
+            }
+        }
+
+        function updateScore() {
+            if(start==true)
+            {
+                var scoreElement = document.getElementById("score");
+                scoreElement.textContent = "Score: " + score++;
+                if (score === 700) {
+                    setTimeout(() => {
+                      obstacle.style.animation = "movimiento1 1.4s linear infinite";   
+                    }, 3000);
+                   
+                } else if (score === 1700) {
+                    setTimeout(() => {
+                      obstacle.style.animation = "movimiento2 1.1s linear infinite";  
+                    }, 1500);
+                    
+                } else if(score == 2300)
+                {
+                    alert("Enhorabuena pasaste a la historia!!!");
+                    window.location.href = "final.html";
+
+                }
+            }
+        }
+
+
+        setInterval(checkCollision, 10); // Check for collisions every 10 milliseconds
+    </script>
+</body>
+</html>

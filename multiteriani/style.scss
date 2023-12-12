@@ -1,0 +1,168 @@
+$fontsizebig : 3rem;
+$fontsizecasibig: 2rem;
+$fontsizemed : 1.5rem;
+$fontsizenormal : 1rem;
+$fontsizesmall : 0.5rem;
+$bg-predeterminado : black;
+
+@mixin elegante
+{
+    font-family: 'Dancing Script', cursive;
+}
+@mixin normal
+{
+    font-family: 'Oswald', sans-serif;
+}
+html
+{
+    background-color: $bg-predeterminado;
+    color: white;
+    animation: entrada 3s;
+}
+@keyframes entrada {
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+body
+{
+    margin: 0;
+}
+nav
+{
+    @include elegante();
+    font-size: $fontsizecasibig;
+    background-color: white;
+    animation: nav 1s;
+    padding: 0.5%;
+    color: $bg-predeterminado;
+}
+@keyframes nav {
+    from{padding: 0;}
+    to{padding: 0.5%;}
+}
+ul
+{
+    display: flex;
+    padding-left: 0px;
+}
+main ul li
+{
+    flex: 25%;
+    display: inline;
+    text-align: center;
+    padding: 2%;
+}
+#active
+{
+    font-size: 2.2rem;
+}
+main ul li:hover
+{
+    background-color: gray;
+    color: white;
+    padding: 2%;
+    border-radius: 15px;
+}
+main h1
+{
+    font-size:$fontsizebig;
+    @include elegante();
+    background-color: $bg-predeterminado;
+    color: white !important;
+    text-align: center;
+    padding-top: 2%;
+}
+main h1:hover
+{
+    animation: giroh1 3s;
+}
+@keyframes giroh1 {
+    50%
+    {
+        transform: scaleY(-1) scaleX(-1);   
+    }
+}
+article
+{
+    margin:0 10%;
+    padding: 1%;
+    border: solid 1px;
+    @include normal();
+    font-size: $fontsizemed;
+}
+.close-btn {
+    cursor: pointer;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+#segundoArt
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#popup
+{
+    padding: 5% 10%;
+    text-align: center;
+    color: white;
+    font-size: $fontsizecasibig;
+    @include normal();
+    border-radius: 15px;
+    background-color: #333;
+}
+#popup:hover
+{
+    background-color: #666;
+    text-shadow: 1px 0px 0.5px black;
+}
+article h2
+{
+    text-align: center;
+    @include elegante();
+}
+svg path
+{
+    fill: #333;
+    stroke: black;
+    
+}
+svg path:hover
+{
+    fill: white;
+    stroke: black;
+    
+}
+#ES:hover
+{
+    fill: green;
+}
+.France:hover
+{
+    fill: green;
+}
+.Canada:hover
+{
+    fill: green;
+}
+.States:hover
+{
+    fill: green;
+}
+footer
+{
+    padding: 4%;
+    margin-top: 70px;
+    background-color: #333;
+    
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    50% {font-size: $fontsizesmall;}
+    100% { transform: rotate(360deg); }
+}
+footer h4{
+    text-align: center;
+    font-size: $fontsizemed;
+}

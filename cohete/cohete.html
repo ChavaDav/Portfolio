@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Documento Espacial</title>
+    <style>
+        html {
+            background-image: url("espacio.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        button {
+            padding: 20px;
+            font-size: 3rem;
+            background-color: rgb(70, 235, 25);
+        }
+
+        #contenedor {
+            position: absolute;
+            top: 600px;
+            left: 900px;
+        }
+
+        img {
+            width: 100px;
+            height: 150px;
+        }
+
+        #distra {
+            background-color: white;
+            position: absolute;
+            bottom: 150px;
+            opacity: 0;
+            left: 5px;
+        }
+
+        .explosion {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        @keyframes subir {
+            20% {
+                top: 400px;
+            }
+            40% {
+                top: 0;
+            }
+            50% {
+                transform: translate(180px) rotate(180deg);
+            }
+            60% {
+                top: 200px;
+            }
+            80% {
+                top: 100px;
+            }
+        }
+    </style>
+    <script>
+        let cohete_change = false;
+
+        function distra() {
+            if (cohete_change !== true) {
+                var element = document.getElementById("distra");
+                element.style.opacity = "1";
+            } else {
+                var explosion = document.getElementById("explosion");
+                explosion.style.opacity = "1"; // Hacerlo visible
+
+                setTimeout(function () {
+                    explosion.style.opacity = "0";
+                }, 4000);
+                explosion.style.transform = "scale(3)";
+                setTimeout(function () {
+                    alert("¡Nooo hiciste que explote!");
+                    location.href = 'error.html';
+                }, 500);
+            }
+        }
+
+        function vuelo() {
+    if (!cohete_change) {
+        cohete_change = true;
+        var contenedor = document.getElementById("contenedor");
+        contenedor.style.animation = "none";
+        void contenedor.offsetWidth; // Reiniciar la animación
+        contenedor.style.animation = "subir 3s linear";
+        setTimeout(function () {
+            document.getElementById("cohete").setAttribute("src", "cohete2.png");
+        }, 500);
+        setTimeout(function () {
+            document.getElementById("cohete").setAttribute("src", "cohete.png");
+            cohete_change = false;
+        }, 4000);
+    }
+}
+
+
+    </script>
+</head>
+<body>
+<h1 align="center"><button onclick="vuelo();">Pulsa para despegar</button></h1>
+<div id="contenedor">
+    <h1 id="distra" align="center">No distraigas al piloto</h1>
+    <div id="explosion" class="explosion" onmouseenter="distra()"></div>
+    <img id="cohete" src="cohete.png" alt="Cohete Espacial" onmouseenter="distra()">
+</div>
+</body>
+</html>

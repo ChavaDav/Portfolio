@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario moviles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="/images/ChavaNet.jpeg">
+    <style>
+        html
+        {
+            background-color: rgb(68, 121, 236);
+        }
+        body {
+            margin: 50px 10%;
+            border: solid 1px;
+            padding: 10vh 10vh 10vh 10vh;
+            animation: entrada 2s;
+            position: relative;
+            
+        }
+        #retorno
+        {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50px;
+          height: auto;
+        }
+        @keyframes entrada {
+            from{opacity: 0;}
+            to{opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+  <a href="index.html"><img src="https://i.pinimg.com/originals/65/4b/d4/654bd4a95b70c8c0e72bd6da86da0b4a.png" id="retorno" alt=""></a>
+    <form method="get" action="guardar_movil.php">
+        <h1 class="align-content-center text-primary" style="display: inline;">Añadir móviles</h1>
+        <img src="https://i.pinimg.com/474x/f1/5b/97/f15b971b55bf32e3b553f5c00052125c.jpg" width="10%%" style="position: relative;bottom: 10px;" alt="">
+        <div class="mb-3">
+          <label for="marca" class="form-label">Marca</label>
+          <input type="text" class="form-control" id="marca" name="marca">
+        </div>
+        <div class="mb-3">
+          <label for="modelo" class="form-label">Modelo</label>
+          <input type="text" class="form-control" id="modelo" name="modelo">
+        </div>
+        <div class="mb-3">
+          <label for="año" class="form-label">Año</label>
+          <input type="text" class="form-control" id="año" name="año">
+        </div>
+        <div class="mb-3">
+          <label for="pulgadas" class="form-label">Pulgadas</label>
+          <input type="text" class="form-control" id="pulgadas" name="pulgadas">
+        </div>
+        <div class="mb-3">
+          <label for="tipo_pantalla" class="form-label">Tipo de Pantalla</label>
+          <input type="text" class="form-control" id="tipo_pantalla" name="tipo_pantalla">
+        </div>
+        <div class="mb-3">
+          <label for="conectividad" class="form-label">Conectividad</label>
+          <input type="text" class="form-control" id="conectividad" name="conectividad">
+        </div>
+        <button type="submit" class="btn btn-primary">Añadir</button>
+      </form>
+</body>
+</html>
