@@ -1,4 +1,4 @@
 # Portfolio
 Esta es una recopilación de mis trabajos personales
 ## Sobre mi
-Soy un estudiante de DAW muy interesado en el aprendizaje Y con muchas ganas, también me gusta el backend y tengo facilidad para adaptarme a los cambios o a los nuevos ambientes.
+Soy un estudiante universitario de la UPM que previamente ha hecho un grado de formacion profesional superior en desarrollo de aplaciones web (DAW)
